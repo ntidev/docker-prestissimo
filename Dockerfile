@@ -6,6 +6,8 @@ RUN apk add --no-cache --virtual .build-dependencies git zip zlib-dev \
     && composer global require hirak/prestissimo \
     && apk del .build-dependencies
 
+COPY ./custom.ini /usr/local/etc/php/conf.d/
+
 WORKDIR /app
 
 ENTRYPOINT ["composer"]
