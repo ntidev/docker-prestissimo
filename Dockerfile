@@ -5,7 +5,7 @@ RUN apk add --no-cache --virtual .build-dependencies zip zlib-dev \
     && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer global require hirak/prestissimo \
     && apk del .build-dependencies \
-    && apk --no-cache git
+    && apk add --no-cache git
 
 COPY ./custom.ini /usr/local/etc/php/conf.d/
 
