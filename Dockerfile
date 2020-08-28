@@ -1,8 +1,10 @@
-FROM php:7.4-cli-alpine
+FROM php:7.3.20-cli-alpine
 
 RUN apk update \
     && apk add --no-cache --virtual .build-dependencies zip zlib-dev libzip-dev \
-    && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/local/bin --filename=compose$    && composer global require hirak/prestissimo \
+#    && docker-php-ext-install zip \
+    && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/local/bin --filename=composer \
+    && composer global require hirak/prestissimo \
     && apk del .build-dependencies \
     && apk add --no-cache git
 
