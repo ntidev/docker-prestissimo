@@ -13,4 +13,6 @@ COPY ./custom.ini /usr/local/etc/php/conf.d/
 
 WORKDIR /app
 
+RUN composer self-update 1.9.1
+
 ENTRYPOINT ["composer"]
